@@ -66,7 +66,62 @@ public class Structures {
         }
     }
 
-    // helper functions
+    // SEARCH FUNCTIONS
+    public String linearSearch(int value) {
+        // searches for indexes with value and returns string
+        String indexWithValue = "";
+        boolean valuePresent = false;
+
+        for(int i = 0; i < arraySize; i++) {
+            if(theArray[i] == value) {
+                valuePresent = true;
+                indexWithValue += theArray[i] + " ";
+            }
+        }
+        if(!valuePresent) {
+            indexWithValue = "None";
+        }
+
+        return indexWithValue;
+    }
+
+    // SORT FUNCTIONS
+    public void bubbleSortAscending() {
+        // bubble sort in ascending order
+        boolean swapped;
+        do {
+            swapped = false;
+            for(int i = 0; i < arraySize - 1; i++) {
+                if (theArray[i] > theArray[i+1]) {
+                    swap(i, i+1);
+                    swapped = true;
+                }
+            }
+        } while (swapped);
+    }
+
+    public void bubbleSortDescending() {
+        // bubble sort in decending order
+        boolean swapped;
+        do {
+            swapped = false;
+            for(int i = 0; i < arraySize - 1; i++) {
+                if (theArray[i] < theArray[i+1]) {
+                    swap(i, i+1);
+                    swapped = true;
+                }
+            }
+        } while (swapped);
+    }
+
+
+    // Helper Functions
+    private void swap(int indexOne, int indexTwo) {
+        int temp = theArray[indexOne];
+        theArray[indexOne] = theArray[indexTwo];
+        theArray[indexTwo] = temp;
+    }
+
     private void printArray() {
         // Helper function to visualize the array
         for(int i = 0; i < arraySize; i++) {
@@ -79,11 +134,13 @@ public class Structures {
         Structures textArray = new Structures();
         textArray.generateRandomArray();
         textArray.printArray();
-        System.out.println(textArray.getValueAtIndex(5));
-        System.out.println(textArray.doesArrayContainValue(40));
-        textArray.insertValue(70);
-
+        System.out.println();
+        textArray.bubbleSortAscending();
         textArray.printArray();
+        System.out.println();
+        textArray.bubbleSortDescending();
+        textArray.printArray();
+
 
     }
 }
