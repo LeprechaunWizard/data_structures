@@ -39,6 +39,10 @@ public class DataStructuresView extends Pane {
     public TextField getInsertValue() { return insertValue; }
     public TextField getDeleteIndex() { return deleteIndex; }
     public TextField getFindValue() { return findValue; }
+    public RadioButton getLinearSearch() { return linearSearch; }
+    public RadioButton getBinarySearch() { return binarySearch; }
+    public RadioButton getAscending() { return ascending; }
+    public RadioButton getDescending() { return descending; }
 
     public DataStructuresView(Structures s){
         model = s;

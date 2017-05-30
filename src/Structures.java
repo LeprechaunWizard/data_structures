@@ -75,7 +75,7 @@ public class Structures {
         for(int i = 0; i < arraySize; i++) {
             if(theArray[i] == value) {
                 valuePresent = true;
-                indexWithValue += theArray[i] + " ";
+                indexWithValue += i + " ";
             }
         }
         if(!valuePresent) {
@@ -85,33 +85,48 @@ public class Structures {
         return indexWithValue;
     }
 
+    public String binarySearch(int value) {
+        // search by continually cutting the array in half
+        // array must be sorted
+        int lowIndex = 0;
+        int highIndex = arraySize - 1;
+        int middleIndex = -1;
+
+        while (lowIndex <= highIndex) {
+            middleIndex = (lowIndex + highIndex) / 2;
+
+            if (theArray[middleIndex] > value)
+                highIndex = middleIndex - 1;
+            else if (theArray[middleIndex] < value)
+                lowIndex = middleIndex + 1;
+            else
+                lowIndex = highIndex + 1;
+
+        }
+        return "The value " + value + " is located at index" + middleIndex;
+    }
+
     // SORT FUNCTIONS
     public void bubbleSortAscending() {
         // bubble sort in ascending order
-        boolean swapped;
-        do {
-            swapped = false;
+        for(int j = arraySize - 1; j > 1; j--){
             for(int i = 0; i < arraySize - 1; i++) {
                 if (theArray[i] > theArray[i+1]) {
                     swap(i, i+1);
-                    swapped = true;
                 }
             }
-        } while (swapped);
+        }
     }
 
     public void bubbleSortDescending() {
         // bubble sort in decending order
-        boolean swapped;
-        do {
-            swapped = false;
+        for (int j = arraySize - 1; j > 1; j--){
             for(int i = 0; i < arraySize - 1; i++) {
                 if (theArray[i] < theArray[i+1]) {
                     swap(i, i+1);
-                    swapped = true;
                 }
             }
-        } while (swapped);
+        }
     }
 
 

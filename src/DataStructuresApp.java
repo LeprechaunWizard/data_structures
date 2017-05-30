@@ -38,6 +38,15 @@ public class DataStructuresApp extends Application {
             }
         });
 
+        view.getFindButton().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if(view.getLinearSearch().isSelected()) {
+                    handleLinearSearch();
+                }
+            }
+        });
+
 
         mainWindow.setTitle("Data Structures");
         mainWindow.setScene(new Scene(view, 525, 425));
@@ -65,6 +74,11 @@ public class DataStructuresApp extends Application {
             view.update();
 
         }
+    }
+
+    private void handleLinearSearch() {
+        System.out.println(model.linearSearch(Integer.parseInt(view.getFindValue().getText())));
+
     }
 }
 
