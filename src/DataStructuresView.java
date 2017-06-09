@@ -2,7 +2,6 @@
  * Created by dieterverhufen on 2017-05-20.
  */
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
@@ -16,15 +15,15 @@ public class DataStructuresView extends Pane {
     private Button insertButton;
     private Button deleteButton;
     private Button findButton;
-    private Button sortButton;
+    private Button sortButtonBubble;
     private Button generateArrayButton;
     private ListView<String> arrayView;
-    private RadioButton ascending;
-    private RadioButton descending;
+    private RadioButton ascendingBubble;
+    private RadioButton descendingBubble;
     private RadioButton linearSearch;
     private RadioButton binarySearch;
     private ToggleGroup searchGroup;
-    private ToggleGroup sortGroup;
+    private ToggleGroup sortGroupBubble;
     private TextField insertValue;
     private TextField deleteIndex;
     private TextField findValue;
@@ -33,7 +32,7 @@ public class DataStructuresView extends Pane {
     public Button getInsertButton() { return insertButton; }
     public Button getDeleteButton() { return deleteButton; }
     public Button getFindButton() { return findButton; }
-    public Button getSortButton() { return sortButton; }
+    public Button getSortButtonBubble() { return sortButtonBubble; }
     public Button getGenerateArrayButton() { return generateArrayButton; }
     public ListView<String> getArrayView() { return arrayView; }
     public TextField getInsertValue() { return insertValue; }
@@ -41,8 +40,9 @@ public class DataStructuresView extends Pane {
     public TextField getFindValue() { return findValue; }
     public RadioButton getLinearSearch() { return linearSearch; }
     public RadioButton getBinarySearch() { return binarySearch; }
-    public RadioButton getAscending() { return ascending; }
-    public RadioButton getDescending() { return descending; }
+    public RadioButton getAscendingBubble() { return ascendingBubble; }
+    public RadioButton getDescendingBubble() { return descendingBubble; }
+    public ToggleGroup getSortGroupBubble() { return sortGroupBubble; }
 
     public DataStructuresView(Structures s){
         model = s;
@@ -76,15 +76,15 @@ public class DataStructuresView extends Pane {
         findButton = new Button("Find");
         root.add(findButton, 1, 3);
 
-        sortButton = new Button("Sort");
-        root.add(sortButton, 0, 6);
+        sortButtonBubble = new Button("Sort");
+        root.add(sortButtonBubble, 0, 6);
 
         generateArrayButton = new Button("Generate Array");
         root.add(generateArrayButton, 0, 7, 2, 1);
 
         // Set up ToggleGroups for RadioButtons
         searchGroup = new ToggleGroup();
-        sortGroup = new ToggleGroup();
+        sortGroupBubble = new ToggleGroup();
 
         // RadioButtons
         linearSearch = new RadioButton("Linear");
@@ -95,13 +95,13 @@ public class DataStructuresView extends Pane {
         binarySearch.setToggleGroup(searchGroup);
         root.add(binarySearch, 1, 2);
 
-        ascending = new RadioButton("Ascending");
-        ascending.setToggleGroup(sortGroup);
-        root.add(ascending, 0, 4);
+        ascendingBubble = new RadioButton("Ascending");
+        ascendingBubble.setToggleGroup(sortGroupBubble);
+        root.add(ascendingBubble, 0, 4);
 
-        descending = new RadioButton("Descending");
-        descending.setToggleGroup(sortGroup);
-        root.add(descending, 0, 5);
+        descendingBubble = new RadioButton("Descending");
+        descendingBubble.setToggleGroup(sortGroupBubble);
+        root.add(descendingBubble, 0, 5);
 
         // TableView
         arrayView = new ListView<>();

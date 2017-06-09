@@ -109,7 +109,7 @@ public class Structures {
     // SORT FUNCTIONS
     public void bubbleSortAscending() {
         // bubble sort in ascending order
-        for(int j = arraySize - 1; j > 1; j--){
+        for(int j = arraySize; j > 1; j--){
             for(int i = 0; i < arraySize - 1; i++) {
                 if (theArray[i] > theArray[i+1]) {
                     swap(i, i+1);
@@ -120,13 +120,28 @@ public class Structures {
 
     public void bubbleSortDescending() {
         // bubble sort in decending order
-        for (int j = arraySize - 1; j > 1; j--){
+        for (int j = arraySize; j > 1; j--){
             for(int i = 0; i < arraySize - 1; i++) {
                 if (theArray[i] < theArray[i+1]) {
                     swap(i, i+1);
                 }
             }
         }
+    }
+
+    public void selectionSort() {
+        for(int x = 0; x < arraySize; x++) {
+            int min = x;
+
+            for(int y = x; y < arraySize; y++) {
+                if (theArray[min] > theArray[y]) {
+                    min = y;
+                }
+            }
+
+            swap(x, min);
+        }
+
     }
 
 

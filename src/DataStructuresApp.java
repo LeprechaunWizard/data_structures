@@ -47,6 +47,13 @@ public class DataStructuresApp extends Application {
             }
         });
 
+        view.getSortButtonBubble().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                handleSortButtonBubble();
+            }
+        });
+
 
         mainWindow.setTitle("Data Structures");
         mainWindow.setScene(new Scene(view, 525, 425));
@@ -79,6 +86,16 @@ public class DataStructuresApp extends Application {
     private void handleLinearSearch() {
         System.out.println(model.linearSearch(Integer.parseInt(view.getFindValue().getText())));
 
+    }
+
+    private void handleSortButtonBubble() {
+        if (view.getAscendingBubble().isSelected()) {
+            model.bubbleSortAscending();
+        }
+        else if (view.getDescendingBubble().isSelected()) {
+            model.bubbleSortDescending();
+        }
+        view.update();
     }
 }
 
